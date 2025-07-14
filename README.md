@@ -3,6 +3,13 @@
 A content-based movie recommendation system built with Streamlit, using TF-IDF, cosine similarity, and a clean interface for easy exploration of similar movies.
 
 
+- 📸 Demo
+
+![CineMatch Streamlit App](images/cinematch_demo_1.png)
+
+![CineMatch Streamlit App](images/cinematch_demo_2.png)
+
+
 ---
 
 ## About 
