@@ -4,21 +4,26 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-# Load your saved model artifacts
-# Ensure these are prepared and paths updated
+# Load your saved model
+
 df = pickle.load(open('movies.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
+
+
 
 # CineMatch App
 st.set_page_config(page_title="CineMatch", page_icon="🎬")
 
-# Colorful title
+# TITLE
 st.markdown("<h1 style='text-align: center; color: #FF4B4B;'>🎬 Welcome to CineMatch 🎬</h1>", unsafe_allow_html=True)
 st.markdown("##")
+
 
 # Dropdown to select a movie
 movie_list = df['title'].values
 selected_movie = st.selectbox("Select a movie you like:", movie_list)
+
+
 
 # Function to recommend top 5 movies
 def recommend_top_5(movie_title):
@@ -32,13 +37,20 @@ def recommend_top_5(movie_title):
         recommended.append((i[0], df.iloc[i[0]].title))
     return "Success", recommended
 
+
+
+
 # Recommend button
 if st.button("Show Recommendations"):
     status, recommendations = recommend_top_5(selected_movie)
 
+
     if status == "Movie not found":
         st.error("Movie not found in dataset.")
+
     else:
         st.markdown("## Recommended Movies:")
         for idx, movie in recommendations:
             st.write(f"🎥 {movie}")
+
+            
